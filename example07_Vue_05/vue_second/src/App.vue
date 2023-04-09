@@ -2,9 +2,9 @@
 <div class="main_div">
   <div class="outline">
     <h1>Vue second</h1>
-    <P>1. 组件的生命周期 -> Lifecycle_testing.vue</P>
-    <P>2. 组件之间的数据共享</P>
-    <P>3. ref 引用</P>
+    <P>1. The lifecycle of a component -> Lifecycle_testing.vue</P>
+    <P>2. Data sharing between components</P>
+    <P>3. ref Reference</P>
   </div>
   <h1>Part 1:</h1>
   <lifecycle></lifecycle>
