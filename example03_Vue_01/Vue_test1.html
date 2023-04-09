@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue_test1</title>
+</head>
+<body>
+  <!-- Vue controls the underlying div and fills the inside of it. -->
+  <div id="test1">{{ test_text }}</div>
+  <ul>
+    <li id="test2">{{ test_number}} list</li>
+  </ul>
+
+  <!-- 1. Import the Vue library file to have the Vue constructor globally on the window -->
+  <script src="./lib/vue-2.6.12.js"></script>
+  <!-- 2. Create the Vue instance object (1)-->
+  <script>
+    // Create a Vue instance object
+    const vuetest = new Vue({
+      // The el property is a fixed way of saying that the current vuetest instance controls the test1 area on the page, and it receives a selector.
+      el: '#test1',
+      // The contents of the data object are the data to be rendered on the page.
+      data: {
+        test_text: 'This is a Vue test! This is my first time using Vue!'
+      }
+    })
+  </script>
+
+    <!-- 2. Create the Vue instance object (1)-->
+    <script>
+        // Create a Vue instance object
+        const vuetest2 = new Vue({
+          // The el property is a fixed way of saying that the current vuetest instance controls the test1 area on the page, and it receives a selector.
+          el: '#test2',
+          // The contents of the data object are the data to be rendered on the page.
+          data: {
+            test_number: '1'
+          }
+        })
+      </script>
+
+</body>
+</html>

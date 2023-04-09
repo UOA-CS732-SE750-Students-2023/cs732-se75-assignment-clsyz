@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-text</title>
+    <style>
+      .outline{
+          background-color: rgb(148, 204, 253);
+          border: 2px solid lightblue;
+          padding-left: 5px;
+      }
+  </style>
+</head>
+<body>
+    <div id="v-text_test">
+      <div class="outline">
+        <h1 v-text="v_text">This is v-text</h1>
+        <p>This directive has the disadvantage that it will overwrite the original content inside the element.</p>
+        <p>Although I have specified the content in the p tag, 
+          because v-text will overwrite the original content, 
+          what is rendered on the page is not the specified content, 
+          and the content specified after v-text.</p>
+      </div>
+        
+        <h2>name:</h2>
+        <!--Although I have specified the content in the p tag, 
+          because v-text will overwrite the original content, 
+          what is rendered on the page is not the specified content, 
+          and the content specified after v-text.-->
+        <p v-text="name">name</p>
+        <h2>age:</h2>
+        <p v-text="age">age</p>
+        <h2>gender:</h2>
+        <p v-text="gender">gender</p>
+    </div>
+
+
+    <!-- 1. Import the Vue library file to have the Vue constructor globally on the window -->
+    <script src="./lib/vue-2.6.12.js"></script>
+    <!-- 2. Create the Vue instance object (1)-->
+    <script>
+    // Create a Vue instance object
+    const v_text_test = new Vue({
+      // The el property is a fixed way of saying that the current vuetest instance controls the test1 area on the page, and it receives a selector.
+      el: '#v-text_test',
+      // The contents of the data object are the data to be rendered on the page.
+      data: {
+        v_text: 'This is a test, this is my first time using v-text',
+        name: 'Lsz',
+        age: '23',
+        gender: 'Male'
+      }
+    })
+    </script>
+</body>
+</html>

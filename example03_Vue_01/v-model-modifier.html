@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-model-modifier</title>
+  <style>
+    .outline{
+        background-color: rgb(148, 204, 253);
+        border: 2px solid lightblue;
+        padding-left: 5px;
+    }
+</style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="outline">
+      <h1>The modifier for v-modle:</h1>
+      <h2>.number</h2>
+      <p>Automatically converts user input to a number type, so we can calculate and add or subtract directly</p>
+      <hr>
+      <h2>.trim</h2>
+      <p>Automatically filters whitespace characters from the beginning and the end of the user's input. It is possible that the user may have entered a space before the input. For this reason, we should remove the first whitespace characters.</p>
+      <hr>
+      <h2>.lazy</h2>
+      <p>Update on "change" instead of "input", in other words, the user doesn't change over and over again as they type, but after the user has finished typing, when the input has lost its intersection.</p>
+    </div>
+    <p>.number</p>
+    <p>calculate: x^2 + x + n    </p>
+    x: <input type="text" v-model.number="number1">  
+    n: <input type="text" v-model.number="number2"></br>
+    result: <p>{{number1}}^2 + {{number1}} + {{number2}} = {{number1*number1  + number1 + number2}}</p>
+    <hr>
+    <p>.trim</p>
+    <p>Please enter the input preceded by a space: </p>
+    <input type="text" v-model.trim="name">
+    <button @click="show">Getting the username</button>
+    <hr>
+    <p>.lazy</p>
+    <p>Not using .lazy: {{name}}</p>
+    Use .lazy:<input type="text" v-model.lazy="name">
+    Not .lazy:<input type="text" v-model="name">
+
+  </div>
+
+  <script src="./lib/vue-2.6.12.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        name: '',
+        number1: 3,
+        number2: 4
+      },
+      methods: {
+        show() {
+          alert(`Name is："${this.name}"`)
+          //In the terminal output, showing what the modifier does.
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

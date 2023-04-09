@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-if-else</title>
+    <style>
+      .outline{
+          background-color: rgb(148, 204, 253);
+          border: 2px solid lightblue;
+          padding-left: 5px;
+      }
+  </style>
+</head>
+<body>
+    <div id="v-if-else">
+      <div class="outline">
+        <h1>v-if-else</h1>
+        <p>Dynamically create or remove DOM elements, 
+          so as to realize the display and hiding of elements on the page, 
+          and display and hide elements according to judgment.</p>
+      </div>
+        <p>Please select a level in A, B, C, D and enter it into the input box</p>
+        <input type="text" v-model.lazy="level">
+        <p v-if="level === 'A'">Level: Excellent</p>
+        <p v-else-if="level === 'B'">Level: Good</p>
+        <p v-else-if="level === 'C'">Level: Average</p>
+        <p v-else-if="level === 'D'">Level: poor</p>
+        <p v-else>No ratings yet</p>
+        <hr>
+        <p>3 * 4, Please enter the answer:</p>
+        <input v-model.lazy="number">
+        <p v-if="number === '12'">Good! Your answer is correct!</p>
+        <p v-else-if="number === ''">Try</p>
+        <p v-else>think again</p>
+    </div>
+    <script src="./lib/vue-2.6.12.js"></script>
+    <script>
+    const Vue_test = new Vue({
+        // The el property is a fixed way of saying that the current vuetest instance controls the test1 area on the page, and it receives a selector.
+        el: '#v-if-else',
+        // The contents of the data object are the data to be rendered on the page.
+        data: {
+          level: "",
+          number: ''
+        },
+      })
+      </script>
+</body>
+</html>

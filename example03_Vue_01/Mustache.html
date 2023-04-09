@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mustache</title>
+    <style>
+      .outline{
+          background-color: rgb(148, 204, 253);
+          border: 2px solid lightblue;
+          padding-left: 5px;
+      }
+  </style>
+</head>
+<body>
+    <div id="Mustache_test">
+      <div class="outline">
+        <h1>{{ Mustache }}</h1>
+        <p>Interpolation expression, which is most used in actual project development, 
+          is specially used to solve the problem that v-text will overwrite the default text content</p>
+      </div>
+        
+        <p >name: {{name}}</p>
+        <p >age: {{age}}</p>
+        <p >gender: {{gender}}</p>
+    </div>
+
+
+    <!-- 1. Import the Vue library file to have the Vue constructor globally on the window -->
+    <script src="./lib/vue-2.6.12.js"></script>
+    <!-- 2. Create the Vue instance object (1)-->
+    <script>
+    // Create a Vue instance object
+    const Mustache_test = new Vue({
+      // The el property is a fixed way of saying that the current vuetest instance controls the test1 area on the page, and it receives a selector.
+      el: '#Mustache_test',
+      // The contents of the data object are the data to be rendered on the page.
+      data: {
+        Mustache: 'This is a test, this is my first time using Mustache',
+        name: 'Lsz',
+        age: '23',
+        gender: 'Male'
+      }
+    })
+    </script>
+    
+</body>
+</html>

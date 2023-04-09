@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Key modifier</title>
+    <style>
+        .outline{
+            background-color: rgb(148, 204, 253);
+            border: 2px solid lightblue;
+            padding-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="Key_modifier">
+        <div class="outline">
+            <h1>Key modifier</h1>
+            <p>Esc</p>
+            <p>Enter</p>
+        </div>
+        <h1 style="color: blue">Esc</h1>
+        <p>When the "Esc" key is pressed, clear the Input</p>
+        <input type="text" @keyup.esc = "Esc">
+        <hr>
+        <h1 style="color: yellow">Enter, Esc; We use these special keys.</h1>
+        <p>When the "Esc" key is pressed, clear the Input; When the "enter" key is pressed, print "Enter"</p>
+        <input type="text" @keyup.esc = "Esc" @keyup.enter = "Enter">
+    </div>
+
+    <!-- 1. Import the Vue library file to have the Vue constructor globally on the window -->
+    <script src="./lib/vue-2.6.12.js"></script>
+    <!-- 2. Create the Vue instance object (1)-->
+    <script>
+    // Create a Vue instance object
+    const Vue_test = new Vue({
+      // The el property is a fixed way of saying that the current vuetest instance controls the test1 area on the page, and it receives a selector.
+      el: '#Key_modifier',
+      // The contents of the data object are the data to be rendered on the page.
+      data: {},
+      //methods is used to define event handlers
+      methods: {
+        Esc(e) {
+            e.target.value = ""
+        },
+        Enter(e) {
+            e.target.value = "Enter"
+        },
+      },
+    })
+</script>
+</body>
+</html>

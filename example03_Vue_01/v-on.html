@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on</title>
+    <style>
+        .outline{
+            background-color: rgb(148, 204, 253);
+            border: 2px solid lightblue;
+            padding-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id = "v_on">
+        <div class="outline">
+            <h1>v-on or @</h1>
+            <p>The v-on event binding command is used to assist programmers to bind event listeners for DOM elements.</p>
+            <p>This avoids direct manipulation of DOM elements</p>
+        </div>
+        <p>counter：{{ number }}</p>
+        <div class="button_style">
+            <button @click="addcount">counter +1</button>
+            <button v-on:click="subcount(1)">counter -1</button>
+            <button v-on:click="zero_setting">zero setting</button>
+            <hr>
+            
+            <div>
+                <img :src="img_src">
+                <p></p>
+                <button v-on:click="change">switch</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. Import the Vue library file to have the Vue constructor globally on the window -->
+    <script src="./lib/vue-2.6.12.js"></script>
+    <!-- 2. Create the Vue instance object (1)-->
+    <script>
+    // Create a Vue instance object
+    const v_on_test = new Vue({
+      // The el property is a fixed way of saying that the current vuetest instance controls the test1 area on the page, and it receives a selector.
+      el: '#v_on',
+      // The contents of the data object are the data to be rendered on the page.
+      data: {
+        number: 0,
+        count: 0,
+        img_src: './images/light-on.png'
+      },
+      //methods is used to define event handlers
+      methods: {
+        addcount: function(){
+            v_on_test.number = v_on_test.number + 1
+        },
+        subcount(i) {
+            this.number = this.number - i
+        },
+        zero_setting() {
+            this.number = 0
+        },
+        change() {
+            v_on_test.count =  v_on_test.count + 1
+            if(v_on_test.count%2 == 1){
+                v_on_test.img_src = './images/light-off.png'
+            }
+            else{
+                v_on_test.img_src = './images/light-on.png'
+            }
+        }
+      },
+    })
+    </script>
+</body>
+</html>
