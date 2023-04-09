@@ -13,6 +13,8 @@ import student from "@/components/child_components/student.vue"
 Vue.use(VueRouter)
 
 const router = new VueRouter({
+
+    //routing rules
     routes:[
         //redirect
         { path: '/', redirect: '/teacherlogin' },
@@ -29,6 +31,7 @@ const router = new VueRouter({
     ]
 })
 
+//Global Front Guard
 router.beforeEach(function(to, from, next) {
     if(to.path === '/main_page/course'){
         const token = localStorage.getItem('token')

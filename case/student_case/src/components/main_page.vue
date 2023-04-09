@@ -4,6 +4,7 @@
         <div class="main">
             <left_nav></left_nav>
             <div class="right_body">
+            <!--Use keep-alive to ensure that the component is not destroyed after jumping to the page-->
             <keep-alive>
             <router-view></router-view>
             </keep-alive>

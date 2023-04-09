@@ -58,6 +58,7 @@ export default {
             this.password = ''
         },
         teacherlogin() {
+            //Determine username and password
             if (this.teachername === 'sliu822' && this.password === '732') {
                 //The user is correct, store the value, and pass the token
                  localStorage.setItem('token', 'Bearer Entered correctly')
