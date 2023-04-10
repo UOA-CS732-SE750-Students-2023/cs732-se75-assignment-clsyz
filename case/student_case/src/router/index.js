@@ -33,7 +33,7 @@ const router = new VueRouter({
 
 //Global Front Guard
 router.beforeEach(function(to, from, next) {
-    if(to.path === '/main_page/course'){
+    if(to.path === '/main_page/course' || to.path === '/main_page/student' || to.path === '/main_page/dis'){
         const token = localStorage.getItem('token')
         if(token) {
             next()
