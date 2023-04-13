@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-modle</title>
+    <style>
+        .outline{
+            background-color: rgb(148, 204, 253);
+            border: 2px solid lightblue;
+            padding-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="v_if_v_show">
+        <div class="outline">
+            <h1>v-if, v-show</h1>
+            <p>The instruction will dynamically add or remove the style="display: none;" style for the element, 
+                so as to realize the display and hiding of the element</p>
+        </div>
+        <div>
+            <h1>Basic Information: </h1>
+            <p>Name：{{name}}</p>
+            <P>Gender: {{gender}}</P>
+            <P>Age: {{age}}</P>
+            <p>birthplace: {{birthplace}}</p>
+            <P>Introduction: {{Intro}}</P>
+        </div>
+        <hr>
+        <button @click="changetrue">change information</button>
+        <p></p>
+        <div v-if = "changevalue">
+        <form>
+            Name: <input type="text" v-model="name" v-if = "changevalue"><br>
+            Gender: <input type="text" v-model="gender"><br>
+            Age: <input type="text" v-model="age"><br>
+            birthplace:<select v-model="birthplace">
+                <option value="Beijing">Beijing</option>
+                <option value="Shanghai">Shanghai</option>
+                <option value="Liaoning">Liaoning</option>
+            </select><br>
+            <p>Introduction:</p>
+            <textarea rows="5" v-model="Intro"></textarea><br>
+            <button @click="changefalse">Submit</button>
+        </form>
+    </div>
+    </div>
+
+    <!-- 1. Import the Vue library file to have the Vue constructor globally on the window -->
+    <script src="./lib/vue-2.6.12.js"></script>
+    <!-- 2. Create the Vue instance object (1)-->
+    <script>
+    // Create a Vue instance object
+    const Vue_test = new Vue({
+      // The el property is a fixed way of saying that the current vuetest instance controls the test1 area on the page, and it receives a selector.
+      el: '#v_if_v_show',
+      // The contents of the data object are the data to be rendered on the page.
+      data: {
+        name: "Lsz",
+        gender: "male",
+        age: "22",
+        birthplace: "empty",
+        Intro: "sliu822",
+        changevalue: false,
+      },
+      methods: {
+        changetrue() {
+            this.changevalue =  true
+        },
+        changefalse() {
+            this.changevalue = false
+        }
+      },
+    })
+    </script>
+</body>
+</html>

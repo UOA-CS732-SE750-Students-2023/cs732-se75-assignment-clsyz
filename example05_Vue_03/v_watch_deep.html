@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v_watch_deep</title>
+</head>
+<body>
+    <div id="watch_deep">
+        <input type="text" v-model="User.name">
+        <input type="text" v-model="User.age">
+    </div>
+
+
+    <script src="./lib/vue-2.6.12.js"></script>
+    <script>
+        const vue_test = new Vue({
+            el: "#watch_deep",
+            data: {
+                //object
+                User: {
+                    name: "Lsz",
+                    age: "22",
+                },
+            },
+            watch: {
+                User: {
+                    //Here we're listening for the object, not the name property on the object
+                    handler(newValue, oldValue) {
+                        console.log("The name value has been changed!",oldValue.name,"->",newValue.name)
+                    },
+                    //Deep listening
+                    deep: true
+                },
+
+                //Listening directly to object properties
+                'User.age'(newValue, oldValue) {
+                    console.log("The name value has been changed!",oldValue,"->",newValue)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

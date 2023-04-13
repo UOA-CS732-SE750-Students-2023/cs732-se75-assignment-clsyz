@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-Filtrs</title>
+    <style>
+      .outline{
+          background-color: rgb(148, 204, 253);
+          border: 2px solid lightblue;
+          padding-left: 5px;
+      }
+  </style>
+</head>
+<body>
+  <div class="outline">
+    <h1>filter:</h1>
+  </div>
+    <div id="v_filtrs">
+        <p>No operations have been performed before: {{Filyrs_test_value}}</p>
+        <p>The Filyrs test values are: {{ Filyrs_test_value | test_value }} </p>
+    </div>
+    <hr>
+    <div id = "v_filtrs2">
+        <p>No operations have been performed before: {{Filyrs_test_value2}}</p>
+        <p>The global filyrs test values are: {{ Filyrs_test_value2 | test_value }} 
+        </p>
+    </div>
+
+    <script src="./lib/vue-2.6.12.js"></script>
+    <script>
+
+    // Define a global filter using Vue.filter()
+    Vue.filter('test_value', function (str) {
+      const first = str.charAt(0).toUpperCase()
+      const other = str.slice(1)
+      return first + other + '~~~'
+    })
+
+    const Vue_test = new Vue({
+      el: '#v_filtrs',
+      data: {
+        Filyrs_test_value: "aaaaaaaaaaa"
+      },
+      //Filter functions must be defined under the filters node
+      filters: { //Private filters
+        //Note: The val in the parameter of a filter function is always the value before the pipe character
+        test_value(val) {
+          const first_string = val.charAt(0).toUpperCase()
+          const other_string = val.slice(0)
+          return first_string + other_string
+        }
+      }
+    } )
+    const Vue_test2 = new Vue({
+        el: '#v_filtrs2',
+        data: {
+            Filyrs_test_value2: "bbbbbbb"
+      },
+    })
+   
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-watch-immediate</title>
+</head>
+<body>
+    <div id="watch_immediate">
+        <input type="text" v-model="name">
+    </div>
+    <script src="./lib/vue-2.6.12.js"></script>
+    <script>
+        const vue_test = new Vue({
+            el: "#watch_immediate",
+            data: {
+                name: "Lsz",
+            },
+
+            // All listeners should be defined on the watch node.
+            watch: {
+                name: {
+                    // Listener handler function 
+                    handler(newValue, oldValue) {
+                        console.log("The name value has been changed!",oldValue,"->",newValue)
+                    },
+                    //When the page is rendered successfully for the first time, the current watch fires
+                    immediate: true
+                },
+                
+            }
+        })
+    </script>
+</body>
+</html>

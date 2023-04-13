@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v_Watch</title>
+</head>
+<body>
+    <div id="watch">
+        <input type="text" v-model="name">
+    </div>
+    
+
+    <script src="./lib/vue-2.6.12.js"></script>
+    <script>
+        const vue_test = new Vue({
+            el: "#watch",
+            data: {
+                name: "Lsz",
+            },
+
+            // All listeners should be defined on the watch node.
+            watch: {
+                // A listener is essentially a function to watch for changes to, so use the data name as the method name.
+                name(newValue, oldValue) {
+                    //Output in the terminal, and fire on every change in the input data frame.
+                    console.log("The name value has been changed!",oldValue,"->",newValue)
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event modifiers</title>
+    <style>
+      .blue{
+        width: 300px;
+        height: 300px;
+        background-color: lightblue;
+      }
+      .yellow{
+        width: 200px;
+        height: 200px;
+        background-color: lightyellow;
+      }
+        .outline{
+            background-color: rgb(148, 204, 253);
+            border: 2px solid lightblue;
+            padding-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Vue controls the underlying div and fills the inside of it. -->
+  <div id="Event_modifiers">
+    <div class="outline">
+      <h1>Event modifiers</h1>
+      <p>Vue provides event modifiers to assist programmers to control the triggering of events more conveniently. Here mainly implements .stop and .prevent</p>
+      <p>.prevent: Vue provides event modifiers to assist programmers to control the triggering of events more conveniently. Here mainly implements .stop and .prevent</p>
+      <p>.stop: Prevents events from bubbling</p>
+    </div>
+    <h1 style="color: red;">(1) .prevent:</h1>
+    <h2>Direct jump!</h2>
+    <a href="https://openai.com/blog/chatgpt" @click="jump">Go to chatgpt!</a>
+    <h2>The default behavior for blocking links:</h2>
+    <p>In this case, clicking on the link does not go directly to the jump.</p>
+    <a href="https://openai.com/blog/chatgpt" @click.prevent="jump">Go to chatgpt!</a>
+    <hr>
+    <h1 style="color: red;">(2) .stop:</h1>
+    <p>Prevents events from bubbling, </p>
+    <div style="height:fit-content; width:auto ; background-color: rgb(196, 191, 192); padding-left: 50%; line-height: 30px;" @click="divHandler">
+      <button @click="butHandler">button1</button>
+      <p>Observe the difference between the two keys</p>
+      <button @click.stop="butHandler">button2</button>
+    </div>
+    <h1 style="color: red;">(2) .stop:</h1>
+    <h2>Another demonstration, perhaps easier to understand:</h2>
+    <p>Click on The div with different colors, there will be different popups. When I click on The yellow block, it will pop up: "The outer div is yellow" and "The outer div is blue". We find that when I click on the inner div, the outer div will also be triggered. When we click on The blue block, it just pops up: "The outer div is blue".</p>
+    <div @click="showblue()" class="blue">
+      <div @click="showyellow()" class="yellow"></div>
+    </div>
+
+    <h2 style="color: red;">Use .stop</h2>
+    <p>This time when we click on The yellow block again, "The outer div is yellow" will pop up instead of "The outer div is blue".</p>
+    <div @click="showblue()" class="blue">
+      <div @click.stop="showyellow()" class="yellow"></div>
+    </div>
+  </div>
+  
+    <!-- 1. Import the Vue library file to have the Vue constructor globally on the window -->
+    <script src="./lib/vue-2.6.12.js"></script>
+    <!-- 2. Create the Vue instance object (1)-->
+    <script>
+      // Create a Vue instance object
+      const vue_test = new Vue({
+        // The el property is a fixed way of saying that the current vuetest instance controls the test1 area on the page, and it receives a selector.
+        el: '#Event_modifiers',
+        // The contents of the data object are the data to be rendered on the page.
+        methods: {
+            jump() {
+                console.log('Going to chatgpt')
+            },
+            divHandler(e) {
+                e.target.style.background= "red"
+            },
+            butHandler(e) {
+                e.target.style.background= "yellow"
+                e.target.style.color="blue"
+            },
+
+            showblue() {
+              alert("The outer div is blue")
+            },
+
+            showyellow() {
+              alert("The outer div is yellow")
+            }
+
+        },
+      })
+    </script>
+  </body>
+</html>

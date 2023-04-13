@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind</title>
+</head>
+<body>
+    <div id="v_bind">
+        <p style="margin: 0px;">please input:</p>
+        <input type="text" v-bind:placeholder="'user:' + v_bind_text">
+    </div>
+
+    <div id="v_bind_image">
+        <img v-bind:src="img" style="height: 200px; width: 300px; margin-top: 10px;">
+    </div>
+
+    <div id="v_bind2">
+        <input type="text" v-bind:placeholder="'use'+' '+'placeholder'">
+    </div>
+
+
+    <!-- 1. Import the Vue library file to have the Vue constructor globally on the window -->
+    <script src="./lib/vue-2.6.12.js"></script>
+    <!-- 2. Create the Vue instance object (1)-->
+    <script>
+    // Create a Vue instance object
+    const v_bind_test = new Vue({
+      // The el property is a fixed way of saying that the current vuetest instance controls the test1 area on the page, and it receives a selector.
+      el: '#v_bind',
+      // The contents of the data object are the data to be rendered on the page.
+      data: {
+        v_bind_text: 'cly-010811',
+        img:'./images/card.jpg'
+      }
+    })
+
+
+    const v_bind_test_image = new Vue({
+      // The el property is a fixed way of saying that the current vuetest instance controls the test1 area on the page, and it receives a selector.
+      el: '#v_bind_image',
+      // The contents of the data object are the data to be rendered on the page.
+      data: {
+        img:'./images/card.jpg'
+      }
+    })
+
+
+    const v_bind_test2 = new Vue({
+      // The el property is a fixed way of saying that the current vuetest instance controls the test1 area on the page, and it receives a selector.
+      el: '#v_bind2',
+      // The contents of the data object are the data to be rendered on the page.
+      data: {
+        text1:'text1',
+        text2:'text2'
+      }
+    })
+    </script>
+</body>
+</html>

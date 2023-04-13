@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-computed</title>
+    <style>
+        .box {
+            margin-top: 20px;
+            display: flex;
+
+        }
+        .color-box {
+            width: 200px;
+            height: 20px;
+            border: 2px solid #ccc;
+        }
+        .outline{
+          background-color: rgb(148, 204, 253);
+          border: 2px solid lightblue;
+          padding-left: 5px;
+      }
+    </style>
+</head>
+<body>
+  <div class="outline">
+    <h1>Computed property:</h1>
+    <p>Part1: debug color</p>
+    <p>Part2: reverse string</p>
+    <p>It is defined as a method when it is declared, but it is essentially an attribute. 
+      Only when the data that the calculation attribute depends on changes, the calculation will be recalculated.</p>
+  </div>
+    <div id="v_computed">
+      <h2>Part1:</h2>
+        <div>
+          <span style="color: red;">R：</span>
+          <input type="text" v-model.number="red">
+        </div>
+        <div>
+          <span style="color: green;">G：</span>
+          <input type="text" v-model.number="green">
+        </div>
+        <div>
+          <span style="color: blue;">B：</span>
+          <input type="text" v-model.number="blue">
+        </div>
+        <div class="box">
+            <span> {{ rgb }}:</span>
+            <div class="color-box" :style="{ backgroundColor: rgb }"> </div>
+    </div>
+
+    <hr>
+    <h2>Part2:</h2>
+    Enter a string:<input type="text" v-model="string">
+    <P>Result after inversion: {{Result}}</P>
+    </div>
+    <script src="./lib/vue-2.6.12.js"></script>
+        <script>
+            var Vue_test = new Vue({
+              el: '#v_computed',
+              data: {
+                red: 0,
+                green: 0,
+                blue: 0,
+                string:""
+              },
+              // 所有的计算属性，都要定义到 computed 节点之下
+              // 计算属性在定义的时候，要定义成“方法格式”
+              computed: {
+                // rgb 作为一个计算属性，被定义成了方法格式，
+                // 最终，在这个方法中，要返回一个生成好的 rgb(x,x,x) 的字符串
+                rgb() {
+                  return `rgb(${this.red}, ${this.green}, ${this.blue})`;
+                },
+
+                Result() {
+                  return this.string.split('').reverse().join('');
+                }
+              }
+            })
+          </script>
+</body>
+</html>

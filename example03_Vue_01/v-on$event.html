@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on</title>
+    <style>
+        .outline{
+            background-color: rgb(148, 204, 253);
+            border: 2px solid lightblue;
+            padding-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id = "v_on">
+        <div class="outline">
+            <h1>$event</h1>
+            <p>Transport as an object of an event</p>
+        </div>
+        <p>counter：{{ number }}</p>
+        <div class="button_style">
+            <button @click="addcount">counter +1</button>
+            <!--Vue provides a built-in variable called $event, which is the native DOM event object-->
+            <button v-on:click="subcount(1, $event)">counter -1</button>
+            <button v-on:click="zero_setting">zero setting</button>
+            <hr>
+            
+            <div>
+                <img :src="img_src">
+                <p></p>
+                <button v-on:click="change" style="background-color: yellow;">switch</button>
+                        <!--No arguments are passed to the change function-->
+            </div>
+
+            <hr>
+            <button @click="showevent($event)">Show $event</button>
+        </div>
+    </div>
+
+    <!-- 1. Import the Vue library file to have the Vue constructor globally on the window -->
+    <script src="./lib/vue-2.6.12.js"></script>
+    <!-- 2. Create the Vue instance object (1)-->
+    <script>
+    // Create a Vue instance object
+    const v_on_test = new Vue({
+      // The el property is a fixed way of saying that the current vuetest instance controls the test1 area on the page, and it receives a selector.
+      el: '#v_on',
+      // The contents of the data object are the data to be rendered on the page.
+      data: {
+        number: 0,
+        count: 0,
+        img_src: './images/light-on.png'
+      },
+      //methods is used to define event handlers
+      methods: {
+        addcount: function(DOM){
+            v_on_test.number = v_on_test.number + 1
+            if (this.number%2 == 0){
+                DOM.target.style.background = ''
+                DOM.target.style.color=''
+            }else{
+                DOM.target.style.background = 'blue'
+                DOM.target.style.color='red'
+            }
+            
+        },
+        subcount(i, DOM) {
+            this.number = this.number - i
+            if(this.number%2 == 0){
+                DOM.target.style.background = ''
+                DOM.target.style.color=''
+            }else{
+                DOM.target.style.background = 'red'
+                DOM.target.style.color = 'blue'
+            }
+            
+        },
+
+
+        zero_setting(DOM) {
+            this.number = 0
+            DOM.target.style.color='yellow'
+            DOM.target.style.background = 'red'
+            
+        },
+        change(e) {
+            //Here I am passing an e argument to the change function, which represents the object that triggered the event.
+            v_on_test.count =  v_on_test.count + 1
+            if(v_on_test.count%2 == 1){
+                v_on_test.img_src = './images/light-off.png'
+                e.target.style.background = ''
+                //Change the background color of the object that triggered the event
+            }
+            else{
+                v_on_test.img_src = './images/light-on.png'
+                e.target.style.background = 'yellow'
+                //Change the background color of the object that triggered the event
+            }
+        },
+
+        showevent(e) {
+            alert(e)
+        }
+      },
+    })
+    </script>
+</body>
+</html>
